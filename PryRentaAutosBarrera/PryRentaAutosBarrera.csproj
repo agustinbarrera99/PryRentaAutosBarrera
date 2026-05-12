@@ -46,39 +46,62 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Controllers\VehiculoController.cs" />
-    <Compile Include="Entities\Vehiculo.cs" />
-    <Compile Include="Forms\FrmMain.cs">
+    <Compile Include="clsConexion.cs" />
+    <Compile Include="frmAlquileres.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\FrmMain.Designer.cs">
-      <DependentUpon>FrmMain.cs</DependentUpon>
+    <Compile Include="frmAlquileres.Designer.cs">
+      <DependentUpon>frmAlquileres.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\FrmVehiculoDetalle.cs">
+    <Compile Include="frmChoferes.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\FrmVehiculoDetalle.Designer.cs">
-      <DependentUpon>FrmVehiculoDetalle.cs</DependentUpon>
+    <Compile Include="frmChoferes.Designer.cs">
+      <DependentUpon>frmChoferes.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\FrmVehiculos.cs">
+    <Compile Include="frmContratos.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\FrmVehiculos.Designer.cs">
-      <DependentUpon>FrmVehiculos.cs</DependentUpon>
+    <Compile Include="frmContratos.Designer.cs">
+      <DependentUpon>frmContratos.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmPrincipal.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmPrincipal.Designer.cs">
+      <DependentUpon>FrmPrincipal.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmReportes.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmReportes.Designer.cs">
+      <DependentUpon>frmReportes.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmVehiculos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmVehiculos.Designer.cs">
+      <DependentUpon>frmVehiculos.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Repository\DataBaseConnection.cs" />
-    <Compile Include="Repository\IVehiculoRepository.cs" />
-    <Compile Include="Repository\VehiculoRepository.cs" />
-    <EmbeddedResource Include="Forms\FrmMain.resx">
-      <DependentUpon>FrmMain.cs</DependentUpon>
+    <EmbeddedResource Include="frmAlquileres.resx">
+      <DependentUpon>frmAlquileres.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\FrmVehiculoDetalle.resx">
-      <DependentUpon>FrmVehiculoDetalle.cs</DependentUpon>
+    <EmbeddedResource Include="frmChoferes.resx">
+      <DependentUpon>frmChoferes.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\FrmVehiculos.resx">
-      <DependentUpon>FrmVehiculos.cs</DependentUpon>
+    <EmbeddedResource Include="frmContratos.resx">
+      <DependentUpon>frmContratos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmPrincipal.resx">
+      <DependentUpon>FrmPrincipal.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmReportes.resx">
+      <DependentUpon>frmReportes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmVehiculos.resx">
+      <DependentUpon>frmVehiculos.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -98,15 +121,15 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <None Include="README.MD" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup />
   <ItemGroup>
-    <Content Include="DB\RentaAutos.accdb">
+    <Resource Include="assets\ExecutiveCar_Black_icon-icons.com_54904.ico">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
+    </Resource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
