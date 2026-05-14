@@ -150,5 +150,15 @@ namespace PryRentaAutosBarrera
 
         private void dgvReporte_DataSourceChanged(object sender, EventArgs e)
             => ActualizarResumen();
+
+        private void grpResultados_Enter(object sender, EventArgs e)
+        {
+
+        }
+
+        private void lblTituloReporte_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

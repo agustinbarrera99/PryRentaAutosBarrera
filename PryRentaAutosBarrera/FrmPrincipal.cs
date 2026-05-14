@@ -10,6 +10,13 @@ namespace PryRentaAutosBarrera
 
         private clsConexion _conexion;
 
+        // Instancias lazy de cada formulario hijo
+        private frmVehiculos _frmVehiculos;
+        private frmChoferes _frmChoferes;
+        private frmContratos _frmContratos;
+        private frmAlquileres _frmAlquileres;
+        private frmReportes _frmReportes;
+
         public frmPrincipal()
         {
             InitializeComponent();
@@ -27,46 +34,60 @@ namespace PryRentaAutosBarrera
                     MessageBoxIcon.Error);
                 return;
             }
+
             lblEstado.Text = "● Conectado";
             lblEstado.ForeColor = System.Drawing.Color.Green;
+            tabPrincipal.SelectedIndex = 0;
+            CargarFormularioEnTab(tabVehiculos, ref _frmVehiculos, () => new frmVehiculos(_conexion));
         }
 
-        // ── Vehículos ──
-        private void gestionVehiculosToolStripMenuItem_Click(object sender, EventArgs e)
-            => AbrirMDI(new frmVehiculos(_conexion));
+        private void tabPrincipal_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            switch (tabPrincipal.SelectedIndex)
+            {
+                case 0:
+                    CargarFormularioEnTab(tabVehiculos, ref _frmVehiculos, () => new frmVehiculos(_conexion));
+                    break;
+                case 1:
+                    CargarFormularioEnTab(tabChoferes, ref _frmChoferes, () => new frmChoferes(_conexion));
+                    break;
+                case 2:
+                    CargarFormularioEnTab(tabContratos, ref _frmContratos, () => new frmContratos(_conexion));
+                    break;
+                case 3:
+                    CargarFormularioEnTab(tabAlquileres, ref _frmAlquileres, () => new frmAlquileres(_conexion));
+                    break;
+                case 4:
+                    CargarFormularioEnTab(tabReportes, ref _frmReportes, () => new frmReportes(_conexion));
+                    break;
+            }
+        }
 
-        // ── Choferes ──
-        private void gestionChoferesToolStripMenuItem_Click(object sender, EventArgs e)
-            => AbrirMDI(new frmChoferes(_conexion));
+        private void CargarFormularioEnTab<T>(TabPage tab, ref T instancia, Func<T> factory)
+            where T : Form
+        {
+            if (instancia != null && !instancia.IsDisposed)
+                return;
 
-        // ── Contratos ──
-        private void gestionContratosToolStripMenuItem_Click(object sender, EventArgs e)
-            => AbrirMDI(new frmContratos(_conexion));
+            instancia = factory();
+            instancia.FormBorderStyle = FormBorderStyle.None;
+            instancia.TopLevel = false;
+            instancia.Dock = DockStyle.Fill;
 
-        // ── Alquileres ──
-        private void gestionAlquileresToolStripMenuItem_Click(object sender, EventArgs e)
-            => AbrirMDI(new frmAlquileres(_conexion));
-
-        // ── Reportes ──
-        private void reportesToolStripMenuItem_Click(object sender, EventArgs e)
-            => AbrirMDI(new frmReportes(_conexion));
-
-        // ── Salir ──
-        private void salirToolStripMenuItem_Click(object sender, EventArgs e)
+            tab.Controls.Clear();
+            tab.Controls.Add(instancia);
+            instancia.Show();
+        }
+        private void frmPrincipal_FormClosing(object sender, FormClosingEventArgs e)
         {
             if (MessageBox.Show("¿Desea salir del sistema?", "Confirmar",
-                    MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
-                Application.Exit();
-        }
+                    MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.No)
+            {
+                e.Cancel = true;
+                return;
+            }
 
-        // ── Helper MDI ──
-        private void AbrirMDI(Form frm)
-        {
-            frm.MdiParent = this;
-            frm.Show();
+            _conexion?.Dispose();
         }
-
-        private void frmPrincipal_FormClosing(object sender, FormClosingEventArgs e)
-            => _conexion?.Dispose();
     }
 }
