@@ -136,7 +136,7 @@
             this.grpRapidos.Controls.Add(this.btnRptChoferes);
             this.grpRapidos.Controls.Add(this.btnRptCobros);
             this.grpRapidos.Controls.Add(this.btnRptVehiculos);
-            this.grpRapidos.Location = new System.Drawing.Point(642, 12);
+            this.grpRapidos.Location = new System.Drawing.Point(12, 78);
             this.grpRapidos.Name = "grpRapidos";
             this.grpRapidos.Size = new System.Drawing.Size(269, 60);
             this.grpRapidos.TabIndex = 1;
@@ -155,7 +155,7 @@
             // 
             // btnRptChoferes
             // 
-            this.btnRptChoferes.Location = new System.Drawing.Point(68, 20);
+            this.btnRptChoferes.Location = new System.Drawing.Point(68, 22);
             this.btnRptChoferes.Name = "btnRptChoferes";
             this.btnRptChoferes.Size = new System.Drawing.Size(56, 30);
             this.btnRptChoferes.TabIndex = 6;
@@ -188,34 +188,36 @@
             this.grpResultados.Controls.Add(this.lblTituloReporte);
             this.grpResultados.Controls.Add(this.dgvReporte);
             this.grpResultados.Controls.Add(this.lblResumen);
-            this.grpResultados.Location = new System.Drawing.Point(12, 82);
+            this.grpResultados.Location = new System.Drawing.Point(12, 144);
             this.grpResultados.Name = "grpResultados";
-            this.grpResultados.Size = new System.Drawing.Size(880, 370);
+            this.grpResultados.Size = new System.Drawing.Size(844, 283);
             this.grpResultados.TabIndex = 2;
             this.grpResultados.TabStop = false;
             this.grpResultados.Text = "Resultados";
+            this.grpResultados.Enter += new System.EventHandler(this.grpResultados_Enter);
             // 
             // lblTituloReporte
             // 
             this.lblTituloReporte.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
-            this.lblTituloReporte.Location = new System.Drawing.Point(6, 18);
+            this.lblTituloReporte.Location = new System.Drawing.Point(5, 18);
             this.lblTituloReporte.Name = "lblTituloReporte";
-            this.lblTituloReporte.Size = new System.Drawing.Size(868, 22);
+            this.lblTituloReporte.Size = new System.Drawing.Size(836, 22);
             this.lblTituloReporte.TabIndex = 0;
             this.lblTituloReporte.Text = "Historial completo de alquileres";
             this.lblTituloReporte.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.lblTituloReporte.Click += new System.EventHandler(this.lblTituloReporte_Click);
             // 
             // dgvReporte
             // 
             this.dgvReporte.AllowUserToAddRows = false;
             this.dgvReporte.AllowUserToDeleteRows = false;
-            this.dgvReporte.Location = new System.Drawing.Point(6, 44);
+            this.dgvReporte.Location = new System.Drawing.Point(11, 53);
             this.dgvReporte.MultiSelect = false;
             this.dgvReporte.Name = "dgvReporte";
             this.dgvReporte.ReadOnly = true;
             this.dgvReporte.RowHeadersVisible = false;
             this.dgvReporte.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvReporte.Size = new System.Drawing.Size(868, 300);
+            this.dgvReporte.Size = new System.Drawing.Size(821, 267);
             this.dgvReporte.TabIndex = 0;
             this.dgvReporte.DataSourceChanged += new System.EventHandler(this.dgvReporte_DataSourceChanged);
             // 
@@ -233,7 +235,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(923, 464);
+            this.ClientSize = new System.Drawing.Size(872, 448);
             this.Controls.Add(this.grpFiltros);
             this.Controls.Add(this.grpRapidos);
             this.Controls.Add(this.grpResultados);
